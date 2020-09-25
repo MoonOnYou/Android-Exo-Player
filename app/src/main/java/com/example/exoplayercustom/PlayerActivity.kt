@@ -32,6 +32,7 @@ class PlayerActivity : AppCompatActivity() {
 
         // 뷰에 플레이어 설정
         playerView?.player = player
+        playerControlView?.player = player
 
         //비디오데이터 소스를 관리하는 DataSource 객체를 만들어주는 팩토리 객체 생성
         val factory = DefaultDataSourceFactory(this, this.applicationInfo.packageName)
@@ -40,7 +41,7 @@ class PlayerActivity : AppCompatActivity() {
 
 
         player?.prepare(mediaSource)
-        player?.playWhenReady = true
+//        player?.playWhenReady = true // 준비 됬을 때 동영상 바로 실행 할건지 여부
     }
 
     override fun onStop() {

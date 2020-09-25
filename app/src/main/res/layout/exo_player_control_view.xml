@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!--    ImageButton 말고 View 는 안되나 보네.....-->
+<!--    exo_player_control_view.xml 이 이름이랑 exo_play 이 이름 다르게 적으면 동작안함 -->
+<!--    근데 play 랑 pause 는 + 없어도 되는데 나머지는 잇어야 되네;;;  -->
+    <ImageButton
+        android:id="@id/exo_play"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        style="@style/ExoMediaButton.Play"
+        android:background="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <ImageButton
+        android:id="@id/exo_pause"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        style="@style/ExoMediaButton.Pause"
+        android:background="#cccc0000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <ImageButton
+        android:id="@+id/exo_previous"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:background="#cccccccc"
+        style="@style/ExoMediaButton.Previous"/>
+
+    <ImageButton
+        android:id="@+id/exo_rewind"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        style="@style/ExoMediaButton.Rewind"
+        android:background="#0f0f0f"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/exo_previous"/>
+
+    <ImageButton
+        android:id="@+id/exo_ffwd"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        style="@style/ExoMediaButton.FastForward"
+        android:background="#0f0f0f"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/exo_next"/>
+
+    <ImageButton
+        android:id="@+id/exo_next"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:background="#cccccccc"
+        style="@style/ExoMediaButton.Next"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
