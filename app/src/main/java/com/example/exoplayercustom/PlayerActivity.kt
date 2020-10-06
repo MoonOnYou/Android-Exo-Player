@@ -2,6 +2,7 @@ package com.example.exoplayercustom
 
 import android.net.Uri
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.exoplayer2.ExoPlayerFactory
 import com.google.android.exoplayer2.SimpleExoPlayer
@@ -9,11 +10,19 @@ import com.google.android.exoplayer2.source.ExtractorMediaSource
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import kotlinx.android.synthetic.main.activity_player.*
+import kotlinx.android.synthetic.main.exo_player_control_view.*
 
 /**
  *   참고 블로그
  *   https://selfish-developer.com/entry/Exoplayer2-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0
  *   https://lcw126.tistory.com/117
+ *
+ *   rotate screen
+ *   exoplayer change horizontal vertical 로 검색
+ *   https://stackoverflow.com/questions/49303165/exoplayer-resume-on-same-position-on-rotate-screen
+ *
+ *   공식 문서
+ *   https://exoplayer.dev/doc/reference/com/google/android/exoplayer2/ui/PlayerControlView.html#DEFAULT_FAST_FORWARD_MS
  */
 class PlayerActivity : AppCompatActivity() {
     private val videoUri = Uri.parse("http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4")
@@ -22,7 +31,8 @@ class PlayerActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_player)
-
+        exo_rewind.setOnClickListener(onClickListener)
+        exo_ffwd.setOnClickListener(onClickListener)
     }
 
     override fun onStart() {
@@ -49,5 +59,16 @@ class PlayerActivity : AppCompatActivity() {
         playerView?.player = null
         player?.release()
         player = null
+    }
+
+    private val onClickListener = View.OnClickListener { v ->
+        when(v.id){
+            R.id.exo_rewind -> {
+                player?.seekTo( player?.currentPosition ?: 0 - 5000)
+            }
+            R.id.exo_ffwd -> {
+                player?.seekTo(player?.currentPosition ?: 0 + 5000)
+            }
+        }
     }
 }
